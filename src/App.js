@@ -8,30 +8,31 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    todos: [
-        {id: 1, name: "shoppinlll", complete: false},
-        {id: 2, name: "swiming", complete: false}
-    ],
-    message: ""
- };
-//โคตรงง
- this.onChangeMessage = this.onChangeMessage.bind(this);
- this.onSubmitMessage = this.onSubmitMessage.bind(this);
- }
+      todos: [
+        { id: 1, name: "shoppinlll", complete: false },
+        { id: 2, name: "swiming", complete: false }
+      ],
+      message: ""
+    };
+    //โคตรงง
+    this.onChangeMessage = this.onChangeMessage.bind(this);
+    this.onSubmitMessage = this.onSubmitMessage.bind(this);
+  }
   onChangeMessage(e) {
-    this.setState({message: e.target.value});
+    this.setState({ message: e.target.value });
 
   }
-  onSubmitMessage(e){
+  onSubmitMessage(e) {
     e.preventDefault();
-   
+
     let oldTodos = this.state.todos;
     let todosLength = this.state.todos.length;
     let lastId = this.state.todos[todosLength - 1].id
     let newMessage = {
-      id: lastId +1, name: this.state.message, complete: false};
+      id: lastId + 1, name: this.state.message, complete: false
+    };
     oldTodos.push(newMessage);
-    this.setState({todos: oldTodos});
+    this.setState({ todos: oldTodos });
   }
   render() {
     return (
@@ -47,11 +48,11 @@ class App extends Component {
         }}
       >
         <HeaderComponents />
-         <List todos={this.state.todos}/>
-        
-         
-         <FormSubmit onChangeMessage = {this.onChangeMessage}
-          onSubmitMessage = {this.onSubmitMessage} />
+        <List todos={this.state.todos} />
+
+
+        <FormSubmit onChangeMessage={this.onChangeMessage}
+          onSubmitMessage={this.onSubmitMessage} />
       </div>
     );
   }
